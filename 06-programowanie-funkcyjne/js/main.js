@@ -188,23 +188,24 @@ console.log(greeting("Anka"));
 const elements = [
     {
         name: "Nikkon",
-        price: 8.900
+        price: 8900
     },
     {
         name: "Cannon",
-        price: 19.900
+        price: 19900
     },
     {
         name: "Panas",
-        price: 3.600
+        price: 3600
     }
 ];
 
 const sumElements = (collection) => {
-    const sum = 0;
+    let sum = 0;
     for (let item of collection) {
-        sum += sum + item.price;
+        sum += item.price;
     }
+    return sum;
 }
 
 console.log(sumElements(elements));
@@ -218,12 +219,10 @@ const personNames = ['Damian', 'Ania', 'Marek', 'Daria', 'Ewa'];
 
 const getLetters = (collection, personName) => {
     const numbers = [];
-    let index = -1;
-    for (let x in collection) {
-        if (collection[x] === personName) {
-            index = x;
-            numbers.push(index);
-        }
+    for (let item of collection) {
+    
+            numbers.push(item.length);
+        
     }
 
     return numbers;
@@ -238,7 +237,7 @@ console.log(getLetters(personNames));
 // getTheMostExpensiveProduct([{name:"Komputer", price: 100}, {name:"Lampa", price: 10}]) -> {name: "Komputer", price: 100}
 
 const getTheMostExpensiveProduct = (collection) => {
-    const theMostExpensive = collection[0];
+    let theMostExpensive = collection[0];
     for (let item of collection) {
         if (item.price > theMostExpensive.price) {
             theMostExpensive = item;
@@ -253,7 +252,7 @@ console.log (getTheMostExpensiveProduct(elements))
 
 // 5. Napisz funkcje findNameIndex, ktora przyjmie tablice imion i imie, ktore ma wyszukac, a nastepnie zwroci indeks tego elementu
 
-const findNameIndex = (collection) => {
+const findNameIndex = (collection, personName) => {
     let index = -1;
     for (let x in collection) {
         if (collection[x] === personName) {
@@ -263,7 +262,37 @@ const findNameIndex = (collection) => {
     return index;
 }
 
-console.log(personNames);
+console.log(findNameIndex(personNames, 'Ania'));
 
 // findNameIndex(['Damian', 'Ania'], 'Ania') -> 1
 // findNameIndex(['Damian', 'Ania'], 'Damian') -> 0
+
+// 6. Napisz funckje getSumOfFruits, ktora przyjmuje tablice obiektów i zwraca sume samych owocow.
+
+const products3 = [
+    {
+      name: "Jablko",
+      category: "Fruits",
+      price: 4.99
+    },
+    {
+      name: "Banan",
+      category: "Fruits",
+      price: 7.00
+    },
+    {
+      name: "Chleb",
+      category: "Bakery",
+      price: 3.99
+    }
+  ]
+
+  const getSumOfFruits = (collection, phrase) => {
+    const elements = collection.filter(element => element.category.includes(phrase));
+    return elements.reduce((acu, element) => {return acu + element.price}, 0);
+  }
+
+  console.log("-----Zadanie 6 ---------")
+  console.log(getSumOfFruits(products3, "Fruits"));
+  
+  // getSumOfFruits(products3) -> 11.99
