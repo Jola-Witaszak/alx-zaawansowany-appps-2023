@@ -36,7 +36,6 @@ const handleLoadNextImg = () => {
     if (counter == images.length) {
         counter = 0;
     }
-    console.log("licznik: " + counter);
     dogSlider.src = images[counter];
 }
 
@@ -45,7 +44,6 @@ const handleLoadPrviewImg = () => {
     if (counter < 0) {
         counter = images.length - 1;
     }
-    console.log("licznik: " + counter);
     dogSlider.src = images[counter];
 }
 
